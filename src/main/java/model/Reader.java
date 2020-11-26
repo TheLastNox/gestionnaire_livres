@@ -5,14 +5,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity // This tells Hibernate to make a table out of this class
-public class User {
+import javax.validation.constraints.NotNull;
+
+@Entity
+public class Reader {
   @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Integer id;
 
+  @NotNull
   private String name;
 
+  @NotNull
   private String email;
 
   public Integer getId() {
