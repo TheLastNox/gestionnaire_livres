@@ -17,6 +17,10 @@ public class Book {
 	private Integer id;
 	
 	@NotNull
+	@Column(unique = true)
+	private String isbn;
+	
+	@NotNull
 	private String title;
 	
 	@NotNull
@@ -31,53 +35,7 @@ public class Book {
 	
 	@NotNull
 	private Date relDate;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
-	public String getEditor() {
-		return editor;
-	}
-
-	public void setEditor(String editor) {
-		this.editor = editor;
-	}
-
-	public String getDesc() {
-		return desc;
-	}
-
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-
-	public Date getRelDate() {
-		return relDate;
-	}
-
-	public void setRelDate(Date relDate) {
-		this.relDate = relDate;
-	}
 	
+	@NotNull
+	private boolean available;
 }

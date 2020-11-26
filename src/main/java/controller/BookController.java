@@ -47,8 +47,13 @@ public class BookController {
 	}
 	
 	@GetMapping(value = "/book/relDate/{relDate}")
-	public Iterable<Book> getBooksByrRelDate(@PathVariable Date relDate) {
+	public Iterable<Book> getBooksByRelDate(@PathVariable Date relDate) {
 		return bookDao.findByRelDate(relDate);
+	}
+	
+	@GetMapping(value = "/book/available/{available}")
+	public Iterable<Book> getBooksByAvailable(@PathVariable boolean available) {
+		return bookDao.findByAvailable(available);
 	}
 	
 	@PostMapping(path="/book/add")

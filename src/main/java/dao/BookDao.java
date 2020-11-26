@@ -16,5 +16,5 @@ public interface BookDao extends JpaRepository<Book, Integer> {
 	List<Book> findByAuthor(String author);
 	List<Book> findByEditor(String editor);
 	List<Book> findByRelDate(Date relDate);
-
+	List<Book> findByAvailable(boolean available);
 }
