@@ -17,7 +17,7 @@ import dao.BookDao;
 import model.Book;
 
 @Controller
-@RequestMapping(path="/")
+@RequestMapping(path="/v1/api")
 public class BookController {
 	@Autowired
 	private BookDao bookDao;

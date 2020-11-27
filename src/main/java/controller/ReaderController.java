@@ -4,6 +4,7 @@ import model.Reader;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import dao.ReaderDao;
 
 @Controller
-@RequestMapping(path="/")
+@RequestMapping(path="/v1/api")
 public class ReaderController {
 	@Autowired
 	private ReaderDao readerDao;
@@ -31,6 +32,11 @@ public class ReaderController {
 		return readerDao.findById(id);
 	}
 	
+	@GetMapping(value = "/reader/memberId/{memberId}")
+	public Reader getReaderByMemberId(@PathVariable String memberId) {
+		return readerDao.findByMemberId(memberId);
+	}
+	
 	@GetMapping(value = "/reader/name/{name}")
 	public Iterable<Reader> getReadersByName(@PathVariable String name) {
 		return readerDao.findByName(name);
@@ -42,9 +48,9 @@ public class ReaderController {
 	}
 	
 	@PostMapping(path="/reader/add")
-	public @ResponseBody String addNewReader (@RequestBody Reader reader) {
+	public String addNewReader(@Validated @RequestBody Reader reader) {
 		readerDao.save(reader);
-		return "Ajouté!";
+		return "redirect:/redirect-signup/?memberId="+reader.getMemberId();
 	}
 	
 	@PutMapping (value = "/reader/update")

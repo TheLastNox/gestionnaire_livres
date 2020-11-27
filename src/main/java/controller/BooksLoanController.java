@@ -18,7 +18,7 @@ import dao.BooksLoanDao;
 import model.BooksLoan;
 
 @Controller
-@RequestMapping(path="/")
+@RequestMapping(path="/v1/api")
 public class BooksLoanController {
 	@Autowired
 	private BooksLoanDao booksLoanDao;

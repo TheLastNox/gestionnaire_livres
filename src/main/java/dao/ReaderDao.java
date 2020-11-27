@@ -13,6 +13,7 @@ import model.Reader;
 public interface ReaderDao extends JpaRepository<Reader, Integer> {
 	
 	Reader findById(int id);
+	Reader findByMemberId(String memberId);
 	List<Reader> findByName(String name);
 	List<Reader> findByEmail(String email);
 }
